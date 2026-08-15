@@ -4,11 +4,10 @@ import { User } from "@/types/user";
 import { FetchNotesParams, FetchNotesResponse } from "./clientApi";
 import { Note } from "@/types/note";
 
-
 export async function fetchNotes(
   params: FetchNotesParams,
 ): Promise<FetchNotesResponse> {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const response = await nextApi.get<FetchNotesResponse>("/notes", {
     params,
     headers: { Cookie: cookieStore.toString() },
@@ -17,20 +16,16 @@ export async function fetchNotes(
   return response.data;
 }
 
-
-
-
 export async function fetchNoteById(id: string): Promise<Note> {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const response = await nextApi.delete<Note>(`/notes/${id}`, {
     headers: { Cookie: cookieStore.toString() },
   });
   return response.data;
 }
 
-
-export async function getMe() {
-  const cookieStore = cookies();
+export async function getMe(): Promise<User> {
+  const cookieStore = await cookies();
   const { data } = await nextApi.get<User>("/users/me", {
     headers: { Cookie: cookieStore.toString() },
   });
@@ -38,10 +33,9 @@ export async function getMe() {
 }
 
 export async function checkSession() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const response = await nextApi.get("/auth/session", {
     headers: { Cookie: cookieStore.toString() },
   });
   return response;
 }
-

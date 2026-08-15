@@ -33,6 +33,9 @@ export interface UserData {
   email: string;
   password: string;
 }
+interface UpdateMeProps {
+  username: string;
+}
 
 export async function fetchNotes(
   params: FetchNotesParams,
@@ -79,4 +82,9 @@ export async function getMe(): Promise<User> {
 
 export async function logout(): Promise<void> {
   await nextApi.post("/auth/logout");
+}
+
+export async function updateMe(userData: UpdateMeProps): Promise<User> {
+  const { data } = await nextApi.patch("users/me", userData);
+  return data;
 }

@@ -21,8 +21,8 @@ export default function SignUpPage() {
       const userData = await register(registerData);
       setUser(userData);
       router.push("/profile");
-    } catch (e) {
-      setError("registretion is error");
+    } catch (error) {
+      setError("registration is error");
     }
   };
 
