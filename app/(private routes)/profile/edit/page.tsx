@@ -38,9 +38,10 @@ export default function EditProfilePage() {
                 id="username"
                 type="text"
                 className={css.input}
+                defaultValue={user?.username ?? ""}
               />
             </div>
-            <p>Email: user_email@example.com</p>
+            <p>Email: {user?.email}</p>
             <div className={css.actions}>
               <button type="submit" className={css.saveButton}>
                 Save

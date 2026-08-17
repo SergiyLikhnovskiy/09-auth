@@ -40,23 +40,23 @@ interface UpdateMeProps {
 export async function fetchNotes(
   params: FetchNotesParams,
 ): Promise<FetchNotesResponse> {
-  const response = await noteApi.get<FetchNotesResponse>("/notes", { params });
+  const response = await nextApi.get<FetchNotesResponse>("/notes", { params });
 
   return response.data;
 }
 
 export async function deleteNote(id: string): Promise<Note> {
-  const response = await noteApi.delete<Note>(`/notes/${id}`);
+  const response = await nextApi.delete<Note>(`/notes/${id}`);
   return response.data;
 }
 
 export async function createNote(note: CreateNoteProps): Promise<Note> {
-  const response = await noteApi.post<Note>("/notes", note);
+  const response = await nextApi.post<Note>("/notes", note);
   return response.data;
 }
 
 export async function fetchNoteById(id: string): Promise<Note> {
-  const response = await noteApi.get<Note>(`/notes/${id}`);
+  const response = await nextApi.get<Note>(`/notes/${id}`);
   return response.data;
 }
 

@@ -29,8 +29,8 @@ export default function NoteForm() {
     mutationFn: createNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["notes"] });
-      handleCancel();
       clearDraft();
+      handleCancel();
     },
   });
   const handleSubmit = (formData: FormData) => {

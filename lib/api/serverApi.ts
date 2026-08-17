@@ -18,7 +18,7 @@ export async function fetchNotes(
 
 export async function fetchNoteById(id: string): Promise<Note> {
   const cookieStore = await cookies();
-  const response = await nextApi.delete<Note>(`/notes/${id}`, {
+  const response = await nextApi.get<Note>(`/notes/${id}`, {
     headers: { Cookie: cookieStore.toString() },
   });
   return response.data;

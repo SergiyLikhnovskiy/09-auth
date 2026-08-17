@@ -3,7 +3,25 @@ import React from "react";
 import css from "./ProfilePage.module.css";
 import Link from "next/link";
 import { getMe } from "@/lib/api/serverApi";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Profile",
+  description: "You personal information on NoteHub",
+  openGraph: {
+    title: "Profile",
+    description: "You personal information on NoteHub",
+    url: "https://09-auth-eight-tau.vercel.app/profile",
+    images: [
+      {
+        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+        width: 1200,
+        height: 630,
+        alt: "NoteHub ",
+      },
+    ],
+  },
+};
 export default async function ProfilePage() {
   const user = await getMe();
   return (
