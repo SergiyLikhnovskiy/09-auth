@@ -85,6 +85,6 @@ export async function logout(): Promise<void> {
 }
 
 export async function updateMe(userData: UpdateMeProps): Promise<User> {
-  const { data } = await nextApi.patch("users/me", userData);
+  const { data } = await nextApi.patch("/users/me", userData);
   return data;
 }

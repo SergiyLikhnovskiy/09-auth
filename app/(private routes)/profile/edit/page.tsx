@@ -4,6 +4,7 @@ import css from "./EditProfilePage.module.css";
 import { updateMe } from "@/lib/api/clientApi";
 import { useAuthStore } from "@/lib/store/authStore";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function EditProfilePage() {
   const { user, setUser } = useAuthStore();
@@ -30,6 +31,14 @@ export default function EditProfilePage() {
       <main className={css.mainContent}>
         <div className={css.profileCard}>
           <h1 className={css.formTitle}>Edit Profile</h1>
+
+          <Image
+            src={user?.avatar ?? ""}
+            alt="User avatar"
+            width={120}
+            height={120}
+            className={css.avatar}
+          />
           <form action={handleSubmit} className={css.profileInfo}>
             <div className={css.usernameWrapper}>
               <label htmlFor="username">Username:</label>
