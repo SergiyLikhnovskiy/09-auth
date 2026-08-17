@@ -1,15 +1,6 @@
 import { Note, NoteTag } from "@/types/note";
-import axios from "axios";
 import { nextApi } from "./api";
 import { User } from "@/types/user";
-
-const token = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
-const noteApi = axios.create({
-  baseURL: "https://notehub-public.goit.study/api",
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
-});
 
 export interface FetchNotesParams {
   page: number;
